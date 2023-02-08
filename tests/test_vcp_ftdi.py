@@ -34,7 +34,6 @@ logging.basicConfig(
 class VcpFtdiTestCase(BaseRealSensorMockTestCase):
     @mock.patch("lsst.ts.ess.controller.device.vcp_ftdi.Device")
     async def test_vcp_ftdi(self, mock_ftdi_device: mock.AsyncMock) -> None:
-
         name = "MockedVcpFtdi"
         self.num_channels = 2
         self.sensor.num_channels = self.num_channels
