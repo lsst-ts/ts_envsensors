@@ -24,10 +24,7 @@ test:
     - ts-ess-common
     - ts-tcpip
     - ts-utils
-    - pyserial
-    - pyftdi
     - pylibftdi
-    - aioserial
   source_files:
     - python
     - bin
@@ -55,9 +52,4 @@ requirements:
     - ts-tcpip
     - ts-utils
     - ts-ess-common
-    - ts-tcpip
-    - ts-utils
-    - pyserial
-    - pyftdi
     - pylibftdi
-    - aioserial
