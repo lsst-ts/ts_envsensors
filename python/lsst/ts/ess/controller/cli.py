@@ -44,7 +44,7 @@ async def _run_ess_controller_impl() -> None:
 
     logging.basicConfig(
         format="%(asctime)s:%(levelname)s:%(name)s:%(message)s",
-        level=logging.INFO,
+        level=logging.DEBUG,
     )
     log = logging.getLogger()
 
