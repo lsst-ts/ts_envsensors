@@ -6,6 +6,18 @@
 Version History
 ###############
 
+v0.7.6
+======
+
+* Clean up conda recipe dependencies.
+* Ignore decoding errors for serial device sensors for the first line of telemetry read from the sensor.
+
+Requires:
+
+* ts_ess_common
+* ts_tcpip 0.3
+* ts_utils 1.0
+
 v0.7.5
 ======
 
