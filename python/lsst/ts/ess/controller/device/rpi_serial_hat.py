@@ -103,7 +103,7 @@ class RpiSerialHat(common.device.BaseDevice):
         """
         terminator = self.sensor.terminator.encode(self.sensor.charset)
         bytes_read = await self.ser.read_until_async(expected=terminator)
-        return bytes_read.decode(self.sensor.charset)
+        return bytes_read.decode(encoding=self.sensor.charset, errors="ignore")
 
     async def basic_close(self) -> None:
         """Close the Sensor Device.
