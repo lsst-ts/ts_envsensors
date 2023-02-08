@@ -73,6 +73,10 @@ class RpiSerialHat(common.device.BaseDevice):
             # Unrecoverable error, so propagate error
             raise e
 
+        # Keep track of whether the first telemetry from the sensor have been
+        # read or not. If not then decoding errors will be ignored.
+        self.first_telemetry_read = False
+
     async def basic_open(self) -> None:
         """Open and configure serial port.
         Open the serial communications port and set BAUD.
@@ -103,7 +107,18 @@ class RpiSerialHat(common.device.BaseDevice):
         """
         terminator = self.sensor.terminator.encode(self.sensor.charset)
         bytes_read = await self.ser.read_until_async(expected=terminator)
-        return bytes_read.decode(self.sensor.charset)
+        st = self.sensor.terminator
+
+        # Reading the first line of telemetry from the sensor may lead to
+        # decoding errors since the line may have only been partially read. In
+        # such case the decoding error is silently ignored.
+        try:
+            st = bytes_read.decode(encoding=self.sensor.charset)
+        except ValueError as e:
+            if not self.first_telemetry_read:
+                raise e
+        self.first_telemetry_read = True
+        return st
 
     async def basic_close(self) -> None:
         """Close the Sensor Device.
