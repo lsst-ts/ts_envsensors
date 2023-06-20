@@ -172,7 +172,7 @@ async def _run_ess_controller_impl() -> None:
     srv = common.SocketServer(
         name="EssSensorsServer", host=host, port=port, simulation_mode=0, log=log
     )
-    command_handler = CommandHandler(callback=srv.write, simulation_mode=0)
+    command_handler = CommandHandler(callback=srv.write_json, simulation_mode=0)
     srv.set_command_handler(command_handler)
     log.info("Starting the sensor server.")
     await srv.start_task
