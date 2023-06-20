@@ -33,4 +33,5 @@ else:
 
 # Import sub modules
 from . import device
+from .base_real_sensor_mock_test_case import *
 from .command_handler import *

@@ -10,6 +10,8 @@ v0.8.2
 ======
 
 * Fix write JSON.
+* Revert changes related to pytest import issue.
+  This was fixed in ts_ess_common.
 
 Requires:
 

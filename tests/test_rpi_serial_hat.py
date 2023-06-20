@@ -22,12 +22,9 @@
 from unittest import mock
 
 from lsst.ts.ess import common, controller
-from lsst.ts.ess.controller.base_real_sensor_mock_test_case import (
-    BaseRealSensorMockTestCase,
-)
 
 
-class RpiSerialHatTestCase(BaseRealSensorMockTestCase):
+class RpiSerialHatTestCase(controller.BaseRealSensorMockTestCase):
     @mock.patch(
         "lsst.ts.ess.controller.device.rpi_serial_hat.AioSerial", new=mock.AsyncMock
     )
